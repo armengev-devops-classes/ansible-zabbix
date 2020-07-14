@@ -12,7 +12,8 @@
         deb: '/tmp/zabbix_package.deb'
         update_cache: true
         state: "present"
-    - name: 'Installing Zabbix_agent'
+   
+   - name: 'Installing Zabbix_agent'
       apt:
         name: 'zabbix-agent'
         state: 'present'
