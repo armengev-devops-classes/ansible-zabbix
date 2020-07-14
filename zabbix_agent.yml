@@ -7,8 +7,12 @@
         url: 'https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-3+bionic_all.deb'
         dest: '/tmp/zabbix_package.deb'
          
-    - name: 'Installing_zabbix'
+    - name: 'Installing zabbix_package'
       apt: 
         deb: '/tmp/zabbix_package.deb'
         update_cache: true
         state: "present"
+    - name: 'Installing Zabbix agent'
+      apt:
+        name: 'zabbix-agent'
+        state: 'present'
