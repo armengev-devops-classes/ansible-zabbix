@@ -1,10 +1,11 @@
-- hosts: 'monitoring'
+- hosts: 'agent'
   become: true
   gather_facts: false
+  ansible_user: {{user}}
   tasks:
     - name: 'Download zabbix_package'
       uri:
-        url: 'https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-3+bionic_all.deb'
+        url: 'https://repo.zabbix.com/zabbix/"{{zabbix_version}}"/ubuntu/pool/main/z/zabbix-release/zabbix-release_"{{zabbix_version}}"-3+bionic_all.deb'
         dest: '/tmp/zabbix_package.deb'
          
     - name: 'Installing zabbix_package'
