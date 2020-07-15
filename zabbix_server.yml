@@ -1,7 +1,6 @@
 - hosts: 'server'
   become: true
   gather_facts: false
-    ansible_user: '{{ user }}'
   tasks:
     - name: 'Download zabbix_package'
       uri:
