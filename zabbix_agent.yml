@@ -6,7 +6,8 @@
       uri:
         url: 'https://repo.zabbix.com/zabbix/{{ zabbix_version }}/ubuntu/pool/main/z/zabbix-release/zabbix-release_{{ zabbix_version }}-3+bionic_all.deb'
         dest: '/tmp/zabbix_package.deb'
-         
+      notify: "download_again"
+      
     - name: 'Installing zabbix_package'
       apt: 
         deb: '/tmp/zabbix_package.deb'
@@ -17,3 +18,8 @@
       apt:
         name: 'zabbix-agent'
         state: 'present'
+   
+  handlers: 
+    - name: "download_again"
+      debug:
+        msg: "You are again downloading the same package, try to reconfigure and exclude downloading if the needful package already exist"
